@@ -1,0 +1,504 @@
+/* ==========================================================================
+   Tulum Dinner Club — Styles
+   Color palette derived from the TDC logo (sage green + cream)
+   ========================================================================== */
+
+:root {
+    /* Brand colors from logo */
+    --tdc-sage:        #7D9A8C;
+    --tdc-sage-dark:   #5C7A6C;
+    --tdc-sage-deeper: #3D5A4C;
+    --tdc-cream:       #F5F0E8;
+    --tdc-cream-light: #FAF8F4;
+
+    /* Tropical accents */
+    --tdc-coral:       #E8786A;
+    --tdc-coral-dark:  #D4604F;
+    --tdc-turquoise:   #4ABFB4;
+    --tdc-gold:        #D4A843;
+    --tdc-sand:        #E8DCC8;
+
+    /* Functional */
+    --tdc-text:        #2D3B35;
+    --tdc-text-light:  #6B7D75;
+    --tdc-white:       #FFFFFF;
+    --tdc-shadow:      rgba(61, 90, 76, 0.12);
+    --tdc-shadow-lg:   rgba(61, 90, 76, 0.20);
+
+    /* Fonts */
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--tdc-text);
+    background-color: var(--tdc-cream-light);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+}
+
+a {
+    color: var(--tdc-sage-dark);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--tdc-sage-deeper);
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+
+.hero-section {
+    position: relative;
+    background: linear-gradient(135deg, var(--tdc-sage-deeper) 0%, var(--tdc-sage) 50%, var(--tdc-turquoise) 100%);
+    padding: 3rem 0 2.5rem;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 20% 80%, rgba(232, 120, 106, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(74, 191, 180, 0.2) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.hero-logo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.hero-subtitle {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.02em;
+}
+
+/* Social Buttons in Hero */
+.btn-social {
+    border-radius: 50px;
+    padding: 0.5rem 1.25rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: var(--tdc-white);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    transition: all 0.3s;
+}
+
+.btn-social:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: var(--tdc-white);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-1px);
+}
+
+.btn-instagram:hover {
+    background: rgba(225, 48, 108, 0.3);
+    border-color: rgba(225, 48, 108, 0.5);
+}
+
+.btn-whatsapp:hover {
+    background: rgba(37, 211, 102, 0.3);
+    border-color: rgba(37, 211, 102, 0.5);
+}
+
+/* ==========================================================================
+   Filter Bar
+   ========================================================================== */
+
+.filter-section {
+    background: var(--tdc-white);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--tdc-sand);
+    box-shadow: 0 2px 8px var(--tdc-shadow);
+    z-index: 1020;
+}
+
+.search-box .input-group-text {
+    background: transparent;
+    border: 2px solid var(--tdc-sand);
+    border-right: none;
+    color: var(--tdc-text-light);
+}
+
+.search-box .form-control {
+    border: 2px solid var(--tdc-sand);
+    border-left: none;
+    font-size: 0.95rem;
+}
+
+.search-box .form-control:focus {
+    border-color: var(--tdc-sage);
+    box-shadow: none;
+}
+
+.search-box .form-control:focus + .input-group-text,
+.search-box .input-group-text:has(+ .form-control:focus) {
+    border-color: var(--tdc-sage);
+}
+
+.search-box .form-control::placeholder {
+    color: var(--tdc-text-light);
+}
+
+/* Filter Buttons */
+.btn-filter {
+    border: 2px solid var(--tdc-sand);
+    background: var(--tdc-white);
+    color: var(--tdc-text-light);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.4rem 0.9rem;
+    border-radius: 50px;
+    transition: all 0.25s;
+    white-space: nowrap;
+}
+
+.btn-filter:hover {
+    border-color: var(--tdc-sage);
+    color: var(--tdc-sage-dark);
+    background: var(--tdc-cream-light);
+}
+
+.btn-filter.active {
+    background: var(--tdc-sage);
+    border-color: var(--tdc-sage);
+    color: var(--tdc-white);
+}
+
+.btn-filter i {
+    margin-right: 0.3rem;
+}
+
+/* ==========================================================================
+   Results Count
+   ========================================================================== */
+
+.results-count {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Restaurant Cards
+   ========================================================================== */
+
+.restaurant-card {
+    background: var(--tdc-white);
+    border: 1px solid rgba(125, 154, 140, 0.12);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.restaurant-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px var(--tdc-shadow-lg);
+}
+
+.card-body-inner {
+    padding: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.restaurant-name {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--tdc-text);
+    margin-bottom: 0.25rem;
+}
+
+.restaurant-name-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.restaurant-name-link:hover .restaurant-name {
+    color: var(--tdc-sage-dark);
+}
+
+.visit-date {
+    font-size: 0.78rem;
+    color: var(--tdc-text-light);
+    margin-bottom: 0.6rem;
+    font-style: italic;
+}
+
+/* Badges */
+.badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+}
+
+.badge-tdc {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.3rem 0.65rem;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.badge-rooftop {
+    background: rgba(74, 191, 180, 0.12);
+    color: #2A9D8F;
+}
+
+.badge-hotel {
+    background: rgba(212, 168, 67, 0.12);
+    color: #B8860B;
+}
+
+.badge-foodcourt {
+    background: rgba(232, 120, 106, 0.12);
+    color: var(--tdc-coral-dark);
+}
+
+/* Card Action Links */
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--tdc-sand);
+}
+
+.card-action-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.35rem 0.7rem;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+    color: var(--tdc-text-light);
+}
+
+.card-action-link:hover {
+    background: var(--tdc-cream);
+    color: var(--tdc-sage-dark);
+}
+
+.card-action-link.action-maps:hover {
+    color: #34A853;
+}
+
+.card-action-link.action-instagram:hover {
+    color: #E1306C;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.site-footer {
+    background: var(--tdc-sage-deeper);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 2.5rem 0;
+    margin-top: 2rem;
+}
+
+.footer-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    opacity: 0.85;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+}
+
+.footer-social a {
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.2s, transform 0.2s;
+}
+
+.footer-social a:hover {
+    color: var(--tdc-white);
+    transform: scale(1.15);
+}
+
+.site-footer p {
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+/* ==========================================================================
+   WhatsApp FAB
+   ========================================================================== */
+
+.whatsapp-fab {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25D366;
+    color: var(--tdc-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+    transition: transform 0.25s, box-shadow 0.25s;
+    z-index: 1050;
+}
+
+.whatsapp-fab:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+    color: var(--tdc-white);
+}
+
+/* Pulse animation on load */
+@keyframes fab-pulse {
+    0%   { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4); }
+    50%  { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 0 0 12px rgba(37, 211, 102, 0.1); }
+    100% { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 0 0 20px rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-fab {
+    animation: fab-pulse 2s ease-out 1s 3;
+}
+
+/* ==========================================================================
+   Loading / Empty / Error States
+   ========================================================================== */
+
+#loadingState, #emptyState, #errorState {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#emptyState.d-none, #errorState.d-none {
+    display: none !important;
+}
+
+.spinner-border {
+    color: var(--tdc-sage) !important;
+}
+
+/* ==========================================================================
+   Card Entrance Animation
+   ========================================================================== */
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.restaurant-card {
+    animation: cardFadeIn 0.35s ease-out both;
+}
+
+/* Stagger cards */
+.col-card:nth-child(1)  .restaurant-card { animation-delay: 0.02s; }
+.col-card:nth-child(2)  .restaurant-card { animation-delay: 0.06s; }
+.col-card:nth-child(3)  .restaurant-card { animation-delay: 0.10s; }
+.col-card:nth-child(4)  .restaurant-card { animation-delay: 0.14s; }
+.col-card:nth-child(5)  .restaurant-card { animation-delay: 0.18s; }
+.col-card:nth-child(6)  .restaurant-card { animation-delay: 0.22s; }
+.col-card:nth-child(7)  .restaurant-card { animation-delay: 0.26s; }
+.col-card:nth-child(8)  .restaurant-card { animation-delay: 0.30s; }
+.col-card:nth-child(9)  .restaurant-card { animation-delay: 0.34s; }
+.col-card:nth-child(10) .restaurant-card { animation-delay: 0.38s; }
+.col-card:nth-child(11) .restaurant-card { animation-delay: 0.42s; }
+.col-card:nth-child(12) .restaurant-card { animation-delay: 0.46s; }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 767.98px) {
+    .hero-section {
+        padding: 2rem 0 1.75rem;
+    }
+
+    .hero-logo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .filter-section {
+        padding: 0.6rem 0;
+    }
+
+    .filter-buttons {
+        justify-content: flex-start !important;
+    }
+
+    .btn-filter {
+        font-size: 0.78rem;
+        padding: 0.35rem 0.7rem;
+    }
+
+    .whatsapp-fab {
+        bottom: 1rem;
+        right: 1rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .btn-social {
+        font-size: 0.82rem;
+        padding: 0.4rem 1rem;
+    }
+}
