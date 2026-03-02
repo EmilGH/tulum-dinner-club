@@ -81,6 +81,13 @@
                 data = await fetchGviz(GVIZ_URL);
             }
             if (data && data.length > 0) {
+                // Sort by date, most recent first
+                data.sort((a, b) => {
+                    if (!a.date && !b.date) return 0;
+                    if (!a.date) return 1;   // no date → end
+                    if (!b.date) return -1;
+                    return b.date.localeCompare(a.date);
+                });
                 setCache(data);
                 hideLoading();
                 return data;
